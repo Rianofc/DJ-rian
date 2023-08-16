@@ -22,8 +22,12 @@ yarn add axios
 ```
 pnpm add axios
 ```
+Or use add this to your dependencies package.json
+```
+"axios": "^0.24.0",
+```
 ## ```Example Using```
-this is just an example of how to get the audio using the axios module and the NodeJS System.
+This is just an example of how to get the audio using the axios module and the NodeJS System.
 ```
 try {
     const response = await axios.get('https://raw.githubusercontent.com/BotzIky/DJ-Viral/main/database.json');
