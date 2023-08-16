@@ -31,13 +31,13 @@ try {
       const channel = randomResult.channel;
       const link = randomResult.link;
       const size = randomResult.size;
-      await ctx.replyWithAudio({ url: downloadLink }, { caption: `Judul: ${title}\nChannel: ${channel}\nSize: ${size}\nLink: ${link}` });
+      await ctx.replyWithAudio({ url: downloadLink }, { caption: `Tittle: ${title}\nChannel: ${channel}\nSize: ${size}\nLink: ${link}` });
     } else {
-      ctx.reply('Tidak dapat mengambil data audio dari API.');
+      ctx.reply('Unable to fetch audio data from API.');
     }
   } catch (error) {
     console.error('Error:', error);
-    ctx.reply('Terjadi kesalahan saat memproses perintah.');
+    ctx.reply('An error occurred while processing the command.');
   }
 ```
 Information: 
