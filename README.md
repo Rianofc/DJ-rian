@@ -10,17 +10,9 @@ Install the Axios module by running the following command:
 ```
 npm install axios
 ```
-- Using bower:
-```
-bower install axios
-```
 - Using yarn:
 ```
 yarn add axios
-```
-- Using pnpm:
-```
-pnpm add axios
 ```
 Or use add this to your dependencies package.json
 ```
