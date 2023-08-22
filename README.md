@@ -1,53 +1,31 @@
 # DJ Viral
-📁 Database DJ Viral
-By [Gakkari](https://t.me/Gakkari)
+📂 Database DJ Viral by [Gakkari](https://t.me/Gakkari)
 
-# ```Needed```
-## NodeJS
-## Axios Module
-Install the Axios module by running the following command:
-- Using npm:
+## ```Module```
+node-fetch or axios
+
+## ```Example on the WhatsApp bot```
 ```
-npm install axios
-```
-- Using yarn:
-```
-yarn add axios
-```
-Or use add this to your dependencies package.json
-```
-"axios": "^0.24.0",
-```
-## ```Example Using```
-This is just an example of how to get the audio using the axios module and the NodeJS System.
-```
-try {
-    const response = await axios.get('https://raw.githubusercontent.com/BotzIky/DJ-Viral/main/database.json');
-    if (response.status === 200 && response.data && response.data.results && response.data.results.length > 0) {
-      const randomIndex = Math.floor(Math.random() * response.data.results.length);
-      const randomResult = response.data.results[randomIndex];
-      const downloadLink = randomResult.download;
-      const title = randomResult.title;
-      const channel = randomResult.channel;
-      const link = randomResult.link;
-      const size = randomResult.size;
-      await ctx.replyWithAudio({ url: downloadLink }, { caption: `Tittle: ${title}\nChannel: ${channel}\nSize: ${size}\nLink: ${link}` });
-    } else {
-      ctx.reply('Unable to fetch audio data from API.');
+case 'djviral': {
+    try {
+        let response = await fetch('https://raw.githubusercontent.com/BotzIky/DJ-Viral/main/database.json');
+        let data = await response.json();
+        let randomIndex = Math.floor(Math.random() * data.results.length);
+        let randomResult = data.results[randomIndex];
+        let downloadLink = randomResult.download;
+        let thumbnail = randomResult.thumbnail;
+        let caption = `
+▸ Tittle: ${randomResult.title}
+▸ Channel: ${randomResult.channel}
+▸ YouTube Link: ${randomResult.link}
+▸ Size: ${randomResult.size}
+        `;
+        const djviral = await client.sendMessage(from, { image: { url: thumbnail }, caption: caption }, { quoted: m });
+        await client.sendMessage(from, { audio: { url: downloadLink }, mimetype: 'audio/mp4', fileName: `${randomResult.title}.mp4` }, { quoted: djviral });
+    } catch (error) {
+        console.error(error);
+        m.reply('An error occurred while fetching and sending the audio.');
     }
-  } catch (error) {
-    console.error('Error:', error);
-    ctx.reply('An error occurred while processing the command.');
-  }
+}
+break;
 ```
-Information: 
-This is the url to fetch data from database.json
-```
-const response = await axios.get('https://raw.githubusercontent.com/BotzIky/DJ-Viral/main/database.json');
-```
-Use the client that you are using and use the retrieval logic according to the NodeJS system that you created.
-```
-await ctx.replyWithAudio({ url: downloadLink }, { caption: `Tittle: ${title}\nChannel: ${channel}\nSize: ${size}\nLink: ${link}` });
-```
-## ```Questions and Suggestions```
-Join Group Telegram: [BotzAku Group](https://t.me/Botz_Aku)
