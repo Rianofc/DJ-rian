@@ -1,6 +1,11 @@
 # DJ Viral
 📂 Database DJ Viral by [Gakkari](https://t.me/Gakkari)
 
+## ```Fetch to```
+```
+https://raw.githubusercontent.com/BotzIky/DJ-Viral/main/database.json
+```
+
 ## ```Module```
 node-fetch or axios
 
